@@ -35,7 +35,7 @@ If you prefer not to use CocoaPods, you can integrate QKImageViewer into your pr
 
 # Usage
 ```swift
-import QKImageViewer
+#import "QKImageViewer.h"
 
 [[QKImageViewer sharedQKImageViewer] showImageView:image1 atPoint:image1.center];
 ```
