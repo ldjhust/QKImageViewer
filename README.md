@@ -34,7 +34,7 @@ $ pod install
 If you prefer not to use CocoaPods, you can integrate QKImageViewer into your project manually. Download the source code, and then drag the QKImageViewer/*.{h,m} into your project.
 
 # Usage
-```swift
+```objective-c
 #import "QKImageViewer.h"
 
 [[QKImageViewer sharedQKImageViewer] showImageView:image1 atPoint:image1.center];
