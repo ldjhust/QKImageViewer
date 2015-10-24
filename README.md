@@ -19,7 +19,6 @@ To integrate QKImageViewer into your Xcode project using CocoaPods, specify it i
 
 ```ruby
 platform :ios, '8.0'
-use_frameworks!
 
 pod 'QKImageViewer', '~> 1.0'
 ```
