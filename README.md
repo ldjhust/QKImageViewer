@@ -3,6 +3,8 @@
 # Introduction
 A lightweight framework that simulate WeiXin's image viewer use Objective-C.
 
+If you are looking for Swift version, here it is ![(FSImageViewer)](https://github.com/ldjhust/FSImageViewer)
+
 use Xcode 7.0 to run the sample code.
 
 ![(shown)](https://github.com/ldjhust/QKImageViewer/blob/master/show.gif)
