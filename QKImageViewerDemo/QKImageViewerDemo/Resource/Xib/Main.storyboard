@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--Demo View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="DemoViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="ZQL-4L-fAL">
+                                <rect key="frame" x="64" y="83" width="229" height="229"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="ZQL-4L-fAL" secondAttribute="height" multiplier="1:1" id="Nee-MF-aeW"/>
+                                </constraints>
+                            </imageView>
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="2.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="xPG-4O-tOL">
+                                <rect key="frame" x="328" y="83" width="229" height="229"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="xPG-4O-tOL" secondAttribute="height" multiplier="1:1" id="mKH-FQ-YDH"/>
+                                </constraints>
+                            </imageView>
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="3.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="xq0-r5-b6E">
+                                <rect key="frame" x="186" y="332" width="229" height="229"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="xq0-r5-b6E" secondAttribute="height" multiplier="1:1" id="tCV-6t-7ZW"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="xq0-r5-b6E" firstAttribute="width" secondItem="ZQL-4L-fAL" secondAttribute="width" id="IcQ-ha-bz7"/>
+                            <constraint firstItem="ZQL-4L-fAL" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="44" id="Jhl-ZJ-30r"/>
+                            <constraint firstItem="xq0-r5-b6E" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="bI1-ZF-cI0"/>
+                            <constraint firstItem="xPG-4O-tOL" firstAttribute="centerY" secondItem="ZQL-4L-fAL" secondAttribute="centerY" id="jl8-ph-Gmb"/>
+                            <constraint firstItem="xq0-r5-b6E" firstAttribute="top" secondItem="ZQL-4L-fAL" secondAttribute="bottom" constant="20" id="lXX-tw-eXs"/>
+                            <constraint firstItem="xPG-4O-tOL" firstAttribute="leading" secondItem="ZQL-4L-fAL" secondAttribute="trailing" constant="35" id="mIV-Vi-VOk"/>
+                            <constraint firstItem="ZQL-4L-fAL" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="63" id="qKw-vq-f1Y"/>
+                            <constraint firstItem="xPG-4O-tOL" firstAttribute="width" secondItem="ZQL-4L-fAL" secondAttribute="width" id="teR-Zy-2w7"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="xPG-4O-tOL" secondAttribute="trailing" constant="23" id="xtj-43-0NV"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="image1" destination="ZQL-4L-fAL" id="nt8-EF-evk"/>
+                        <outlet property="image2" destination="xPG-4O-tOL" id="d4u-d9-QtR"/>
+                        <outlet property="image3" destination="xq0-r5-b6E" id="e2d-88-vdL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="311" y="380"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="1.jpg" width="800" height="533"/>
+        <image name="2.jpg" width="1127" height="640"/>
+        <image name="3.jpg" width="1024" height="741"/>
+    </resources>
+</document>
