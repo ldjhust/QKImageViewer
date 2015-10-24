@@ -19,13 +19,6 @@
   UIImageView *contentImageView_; // 深拷贝原始图片，是的缩放操作不影响原始图片
 }
 
-/**
- 一个动画，将scrollView通过渐现的方式呈现出来
- 
- - parameter : NA
- 
- - returns: NA
- */
 - (void)startAnimation;
 - (void)stopAnimation;
 
@@ -46,6 +39,14 @@
 
 #pragma mark - public api
 
+/**
+ 这个方法用来完成所有必要的初始化
+ 
+ - parameter imageView:    需要被查看的图片视图(注意请传入图片所在的ImageView)
+ - parameter atPoint: 这个点会被用来作为图片在屏幕上的中心点(center)，建议传入被查看图片的在屏幕上的中心坐标
+ 
+ - returns: NA
+ */
 - (void)showImageView:(UIImageView *)imageView atPoint:(CGPoint)centerPoint {
   origrinalFrame_ = imageView.frame;
   origrinalImageView_ = imageView;
@@ -55,6 +56,11 @@
   scrollView_ = [[UIScrollView alloc] initWithFrame:[UIScreen mainScreen].bounds];
   scrollView_.backgroundColor = [UIColor blackColor];
   scrollView_.alpha = 0.0; // 一开始不可见
+  scrollView_.delegate = self;
+  scrollView_.showsHorizontalScrollIndicator = false; // 不显示水平/垂直滚动指示器，丑
+  scrollView_.showsVerticalScrollIndicator = false;
+  [scrollView_ setMinimumZoomScale:1.0]; // 不允许缩小
+  [scrollView_ setMaximumZoomScale:3.0]; // 最大缩放倍数是三倍
   
   contentImageView_ = [[UIImageView alloc] init];
   contentImageView_.center = centerPoint;
@@ -91,19 +97,46 @@
     contentImageView_.center = CGPointMake(screenSize_.width/2, screenSize_.height/2);
   }];
   newFrame_ = contentImageView_.frame;
-  NSLog (@"%f %f %f %f", newFrame_.origin.x, newFrame_.origin.y, newFrame_.size.width, newFrame_.size.height);
 }
 
 - (void)stopAnimation {
   origrinalImageView_.frame = newFrame_;
+  // scrollView_使命已经完成，直接移除
   [scrollView_ removeFromSuperview];
   [UIView animateWithDuration:0.3 animations:^{
     origrinalImageView_.frame = origrinalFrame_;
   }];
 }
 
+#pragma mark - scroll view delegate
+
+// 返回在scrollView中哪一个subView会被缩放
+- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {
+  return contentImageView_;
+}
+
+// 保证图片始终处于scrollView的congtentSize中心
+- (void)scrollViewDidZoom:(UIScrollView *)scrollView {
+  CGFloat centerX = screenSize_.width/2;
+  CGFloat centerY = screenSize_.height/2;
+  
+  centerX = scrollView_.contentSize.width > screenSize_.width ?
+                              scrollView_.contentSize.width/2 : centerX;
+  centerY = scrollView_.contentSize.height > screenSize_.height ?
+                               scrollView_.contentSize.height/2 : centerY;
+  
+  contentImageView_.center = CGPointMake(centerX, centerY);
+}
+
 #pragma makr - class method
 
+/**
+ 单例
+ 
+ - parameter : NA
+ 
+ - returns: NA
+ */
 + (QKImageViewer *)sharedQKImageViewer {
   static dispatch_once_t onceToken;
   static QKImageViewer *_sharedQKImageView;
